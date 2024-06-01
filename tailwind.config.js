@@ -2,7 +2,12 @@
 export default {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        yeseva: ["Yeseva One", "serif"],
+      },
+    },
   },
   plugins: [],
 };
