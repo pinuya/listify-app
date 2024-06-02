@@ -1,17 +1,22 @@
 import { Outlet, redirect } from "@remix-run/react"
+import { Nav } from "~/components/Nav"
 
 export const loader = () => {
 	const user = false
-	if (!user) {
-		throw redirect("/entrar")
-	}
+	// if (!user) {
+	// 	throw redirect("/entrar")
+	// }
+	return {}
 }
 
 export default function Private() {
 	return (
 		<div>
-			Layout Private
-			<Outlet />
+			<Nav />
+
+			<div className="">
+				<Outlet />
+			</div>
 		</div>
 	)
 }
