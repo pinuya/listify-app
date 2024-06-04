@@ -10,6 +10,7 @@ import {
 import { Button } from "~/components/ui/button"
 import { PlusIcon } from "@radix-ui/react-icons"
 import { ModeToggle } from "./mode-toggle"
+import { Link } from "@remix-run/react"
 
 export function Nav() {
 	return (
@@ -17,9 +18,11 @@ export function Nav() {
 			<div className="flex items-center justify-between p-4">
 				<div>app</div>
 				<div className="flex gap-4">
-					<Button>
-						<PlusIcon className="mr-2 h-4 w-4" /> Nova Lista
-					</Button>
+					<Link to={"/nova-lista"} prefetch="intent">
+						<Button>
+							<PlusIcon className="mr-2 h-4 w-4" /> Nova Lista
+						</Button>
+					</Link>
 
 					<ModeToggle />
 
@@ -33,7 +36,9 @@ export function Nav() {
 						<DropdownMenuContent>
 							<DropdownMenuLabel>Minha conta</DropdownMenuLabel>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem>Sair</DropdownMenuItem>
+							<Link to={"/"} prefetch="intent">
+								<DropdownMenuItem>Sair</DropdownMenuItem>
+							</Link>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</div>

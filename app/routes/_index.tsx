@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node"
+import { Link } from "@remix-run/react"
 import { Plus } from "lucide-react"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
@@ -28,12 +29,15 @@ export default function Index() {
 
 					<div className="space-x-4">
 						<ModeToggle />
+						<Link to={"/entrar"} prefetch="intent">
+							<Button variant="outline">Entrar</Button>
+						</Link>
 
-						<Button variant="outline">Entrar</Button>
-
-						<Button>
-							<Plus className="mr-2 h-4 w-4" /> Criar Conta
-						</Button>
+						<Link to={"/cadastrar"} prefetch="intent">
+							<Button>
+								<Plus className="mr-2 h-4 w-4" /> Criar Conta
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</nav>
