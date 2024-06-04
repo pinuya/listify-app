@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node"
 import { Link } from "@remix-run/react"
 import { Plus } from "lucide-react"
+import { imgBanner } from "~/assets/images"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
 
@@ -43,8 +44,11 @@ export default function Index() {
 			</nav>
 
 			<section>
-				<h2>Listify</h2>
-				<p>abuble abuble</p>
+				<img
+					src={imgBanner}
+					alt="Banner"
+					className="object-fill w-full object-bottom"
+				/>
 			</section>
 		</div>
 	)
