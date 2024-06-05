@@ -1,7 +1,7 @@
 import type { MetaFunction } from "@remix-run/node"
 import { Link } from "@remix-run/react"
 import { Plus } from "lucide-react"
-import { imgBanner } from "~/assets/images"
+import { bg } from "~/assets/images"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
 
@@ -44,11 +44,20 @@ export default function Index() {
 			</nav>
 
 			<section>
-				<img
-					src={imgBanner}
-					alt="Banner"
-					className="object-fill w-full object-bottom"
-				/>
+				<div className="">
+					<div className="">
+						<h1 className="">Melhor forma de organizar seus afazeres!</h1>
+						<p>
+							seu companheiro digital para organização pessoal e produtividade.
+							Com Listify, você pode criar e gerenciar listas para uma variedade
+							de necessidades, desde tarefas diárias até listas de compras,
+							metas de fitness, roteiros de viagem e muito mais.
+						</p>
+						<Link to={"/criar"}>
+							<Button>Comece agora!</Button>
+						</Link>
+					</div>
+				</div>
 			</section>
 		</div>
 	)
