@@ -44,9 +44,9 @@ export default function Index() {
 			</nav>
 
 			<section>
-				<div className="">
-					<div className="">
-						<h1 className="">Melhor forma de organizar seus afazeres!</h1>
+				<div>
+					<div>
+						<h1>Melhor forma de organizar seus afazeres!</h1>
 						<p>
 							seu companheiro digital para organização pessoal e produtividade.
 							Com Listify, você pode criar e gerenciar listas para uma variedade
