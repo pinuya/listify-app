@@ -1,5 +1,3 @@
-import imgBanner from "./imgBanner.jpg"
-import imgLogin from "./imgLogin.jpg"
-import bg from "./bg.jpg"
+import LandingPage from "./landingPage.svg?react"
 
-export { imgBanner, imgLogin, bg }
+export { LandingPage }
