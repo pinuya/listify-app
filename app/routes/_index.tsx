@@ -21,7 +21,7 @@ export default function Index() {
 			<nav className="border-b bg-card">
 				<div className="flex items-center justify-between p-4">
 					<div className="flex flex-1 items-start justify-start">
-						<ul className="inline-flex space-x-6 font-bold">
+						<ul className="inline-flex space-x-6">
 							<li className="cursor-pointer">Sobre</li>
 							<li className="cursor-pointer">Como usar</li>
 							<li className="cursor-pointer">Contato</li>
