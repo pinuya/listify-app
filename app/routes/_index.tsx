@@ -4,6 +4,13 @@ import { Plus } from "lucide-react"
 import { LandingPage } from "~/assets/images"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu"
+import { MenuIcon } from "lucide-react"
 
 export const meta: MetaFunction = () => {
 	return [
@@ -20,7 +27,7 @@ export default function Index() {
 		<div className="container mx-auto">
 			<nav className="border-b bg-card">
 				<div className="flex items-center justify-between p-4">
-					<div className="flex flex-1 items-start justify-start">
+					<div className="hidden sm:flex flex-1 items-start justify-start">
 						<ul className="inline-flex space-x-6">
 							<li className="cursor-pointer">Sobre</li>
 							<li className="cursor-pointer">Como usar</li>
@@ -28,7 +35,26 @@ export default function Index() {
 						</ul>
 					</div>
 
-					<div className="space-x-4">
+					<div className="sm:hidden">
+						<DropdownMenu>
+							<DropdownMenuTrigger>
+								<MenuIcon />
+							</DropdownMenuTrigger>
+							<DropdownMenuContent>
+								<DropdownMenuItem>
+									<Link to="#Sobre">Sobre</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<Link to="#Uso">Como Usar</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<Link to="#Contato">Contato</Link>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					</div>
+
+					<div className="sm:space-x-4">
 						<ModeToggle />
 						<Link to={"/entrar"} prefetch="intent">
 							<Button variant="ghost">Entrar</Button>
@@ -43,13 +69,13 @@ export default function Index() {
 				</div>
 			</nav>
 
-			<section>
-				<div className="flex pt-28">
-					<div className="sm:pt-48">
+			<section id="intro">
+				<div className="flex flex-col pt-10 sm:flex-row">
+					<div className="sm:mt-44">
 						<h1 className="font-semibold text-3xl sm:text-8xl">
 							Melhor forma <br /> de organizar suas tarefas!
 						</h1>
-						<p className="">
+						<p className="mt-4">
 							Seu companheiro digital para organização pessoal e produtividade.{" "}
 							<br />
 							Com Listify, você pode criar e gerenciar listas para uma variedade
@@ -57,12 +83,12 @@ export default function Index() {
 							desde tarefas diárias até listas de compras, metas de fitness,
 							roteiros de viagem e muito mais.
 						</p>
-						<Link to={"/cadastrar"} prefetch="intent" className="">
-							<Button>Comece agora!</Button>
+						<Link to={"/cadastrar"} prefetch="intent">
+							<Button className="mt-4">Comece agora!</Button>
 						</Link>
 					</div>
 
-					<div>
+					<div className="hidden sm:block">
 						<LandingPage />
 					</div>
 				</div>
