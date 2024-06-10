@@ -11,6 +11,7 @@ import {
 	DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
 import { MenuIcon } from "lucide-react"
+import { motion } from "framer-motion"
 
 export const meta: MetaFunction = () => {
 	return [
@@ -71,26 +72,38 @@ export default function Index() {
 
 			<section id="intro">
 				<div className="flex flex-col pt-10 sm:flex-row">
-					<div className="sm:mt-44">
-						<h1 className="font-semibold text-3xl sm:text-8xl">
+					<motion.div className="sm:mt-44">
+						<motion.h1
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 1 }}
+							className="font-semibold text-3xl sm:text-8xl">
 							Melhor forma <br /> de organizar suas tarefas!
-						</h1>
-						<p className="mt-4">
+						</motion.h1>
+						<motion.p
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 1.5 }}
+							className="mt-4">
 							Seu companheiro digital para organização pessoal e produtividade.{" "}
 							<br />
 							Com Listify, você pode criar e gerenciar listas para uma variedade
 							de necessidades, <br />
 							desde tarefas diárias até listas de compras, metas de fitness,
 							roteiros de viagem e muito mais.
-						</p>
+						</motion.p>
 						<Link to={"/cadastrar"} prefetch="intent">
 							<Button className="mt-4">Comece agora!</Button>
 						</Link>
-					</div>
+					</motion.div>
 
-					<div className="hidden sm:block">
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 2 }}
+						className="hidden sm:block">
 						<LandingPage />
-					</div>
+					</motion.div>
 				</div>
 			</section>
 		</div>
