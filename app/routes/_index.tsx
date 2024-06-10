@@ -92,9 +92,14 @@ export default function Index() {
 							desde tarefas diárias até listas de compras, metas de fitness,
 							roteiros de viagem e muito mais.
 						</motion.p>
-						<Link to={"/cadastrar"} prefetch="intent">
-							<Button className="mt-4">Comece agora!</Button>
-						</Link>
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 2 }}>
+							<Link to={"/cadastrar"} prefetch="intent">
+								<Button className="mt-4">Comece agora!</Button>
+							</Link>
+						</motion.div>
 					</motion.div>
 
 					<motion.div
