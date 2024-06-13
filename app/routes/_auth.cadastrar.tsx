@@ -1,19 +1,18 @@
 import { Button } from "~/components/ui/button"
-import { Input } from "~/components/ui/input"
 
 export default function SignUp() {
 	return (
-		<div className="grid grid-cols-2">
-			<div>imagem bem bacana</div>
+		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
+			<div>abc</div>
 
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">
 				<div className="flex flex-col space-y-2 text-center">
 					<h2 className="text-2xl font-semibold tracking-tight">
 						Crie sua conta
 					</h2>
-					<p className="text-sm text-muted-foreground">
-						Registre-se, facil e rapido
-					</p>
+					<Button className="text-sm text-muted-foreground" variant="link">
+						Ja possui um cadastro? Entre aqui
+					</Button>
 				</div>
 
 				<div className="grid gap-6">
