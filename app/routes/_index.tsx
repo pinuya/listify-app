@@ -27,34 +27,7 @@ export default function Index() {
 	return (
 		<div className="container mx-auto">
 			<nav className="border-b bg-card">
-				<div className="flex items-center justify-between p-4">
-					<div className="hidden sm:flex flex-1 items-start justify-start">
-						<ul className="inline-flex space-x-6">
-							<li className="cursor-pointer">Sobre</li>
-							<li className="cursor-pointer">Como usar</li>
-							<li className="cursor-pointer">Contato</li>
-						</ul>
-					</div>
-
-					<div className="sm:hidden">
-						<DropdownMenu>
-							<DropdownMenuTrigger>
-								<MenuIcon />
-							</DropdownMenuTrigger>
-							<DropdownMenuContent>
-								<DropdownMenuItem>
-									<Link to="#Sobre">Sobre</Link>
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Link to="#Uso">Como Usar</Link>
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Link to="#Contato">Contato</Link>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</div>
-
+				<div className="flex items-end justify-end p-4">
 					<div className="sm:space-x-4">
 						<ModeToggle />
 						<Link to={"/entrar"} prefetch="intent">
