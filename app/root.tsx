@@ -5,12 +5,15 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useLoaderData,
+	useNavigation,
 } from "@remix-run/react"
-import "../tailwind.css"
 import clsx from "clsx"
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "remix-themes"
 import { themeSessionResolver } from "./cookies"
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node"
+import nProgress from "nprogress"
+import { useEffect } from "react"
+import "../tailwind.css"
 
 export const links: LinksFunction = () => {
 	return [
@@ -54,6 +57,18 @@ export default function AppWithProviders() {
 export function App() {
 	const data = useLoaderData<typeof loader>()
 	const [theme] = useTheme()
+
+	const transition = useNavigation()
+
+	// nprogress
+	useEffect(() => {
+		if (transition.state === "loading" || transition.state === "submitting") {
+			nProgress.start()
+		}
+		if (transition.state === "idle") {
+			nProgress.done()
+		}
+	}, [transition.state])
 
 	return (
 		<html lang="en" className={clsx(theme)}>

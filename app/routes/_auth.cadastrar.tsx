@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
 
 export default function SignUp() {
@@ -10,9 +11,6 @@ export default function SignUp() {
 					<h2 className="text-2xl font-semibold tracking-tight">
 						Crie sua conta
 					</h2>
-					<Button className="text-sm text-muted-foreground" variant="link">
-						Ja possui um cadastro? Entre aqui
-					</Button>
 				</div>
 
 				<div className="grid gap-6">
@@ -55,6 +53,11 @@ export default function SignUp() {
 								type="password"
 							/>
 							<Button className="bg-foreground">Criar conta</Button>
+							<Link
+								className="text-sm text-muted-foreground hover:underline"
+								to={"/entrar"}>
+								Ja possui um cadastro? Entre aqui
+							</Link>
 						</div>
 					</form>
 				</div>

@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
 
 export default function SignIn() {
@@ -26,6 +27,11 @@ export default function SignIn() {
 							type="password"
 						/>
 						<Button className="bg-foreground">Entrar</Button>
+						<Link
+							className="text-sm text-muted-foreground hover:underline"
+							to={"/cadastrar"}>
+							Ainda nao possui uma conta? Cadastre-se!
+						</Link>
 					</div>
 				</div>
 			</div>
