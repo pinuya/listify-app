@@ -5,7 +5,10 @@ export default function SignIn() {
 	return (
 		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">
-				Faca o seu login.
+				<div className="text-2xl font-semibold tracking-tight">
+					Faça o seu login.
+				</div>
+
 				<div className="grid gap-6">
 					<div className="grid gap-2">
 						<input
@@ -30,7 +33,7 @@ export default function SignIn() {
 						<Link
 							className="text-sm text-muted-foreground hover:underline"
 							to={"/cadastrar"}>
-							Ainda nao possui uma conta? Cadastre-se!
+							Ainda não possui uma conta? Cadastre-se!
 						</Link>
 					</div>
 				</div>

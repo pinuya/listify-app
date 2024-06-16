@@ -56,7 +56,7 @@ export default function SignUp() {
 							<Link
 								className="text-sm text-muted-foreground hover:underline"
 								to={"/entrar"}>
-								Ja possui um cadastro? Entre aqui
+								Já possui um cadastro? Entre aqui
 							</Link>
 						</div>
 					</form>
