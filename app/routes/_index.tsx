@@ -4,13 +4,6 @@ import { Plus } from "lucide-react"
 import { LandingPage } from "~/assets/images"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu"
-import { MenuIcon } from "lucide-react"
 import { motion } from "framer-motion"
 
 export const meta: MetaFunction = () => {
@@ -83,6 +76,26 @@ export default function Index() {
 						<LandingPage />
 					</motion.div>
 				</div>
+			</section>
+
+			<section className="mt-20 flex flex-col space-y-4 sm:flex-row sm:space-x-4">
+				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
+					<div className="flex flex-col space-y-1.5 p-6">
+						<h3 className="font-semibold leading-none tracking-tight">
+							Titulo
+						</h3>
+						<p className="text-sm text-muted-foreground">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
+							sequi sint illo autem possimus tempore deserunt blanditiis
+							molestiae maxime temporibus quos reprehenderit enim voluptate
+							corrupti animi officia quaerat laboriosam asperiores?
+						</p>
+					</div>
+				</div>
+
+				<div>card2</div>
+
+				<div>card3</div>
 			</section>
 		</div>
 	)
