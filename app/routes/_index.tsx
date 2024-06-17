@@ -93,9 +93,33 @@ export default function Index() {
 					</div>
 				</div>
 
-				<div>card2</div>
+				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
+					<div className="flex flex-col space-y-1.5 p-6">
+						<h3 className="font-semibold leading-none tracking-tight">
+							Titulo 2
+						</h3>
+						<p className="text-sm text-muted-foreground">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
+							sequi sint illo autem possimus tempore deserunt blanditiis
+							molestiae maxime temporibus quos reprehenderit enim voluptate
+							corrupti animi officia quaerat laboriosam asperiores?
+						</p>
+					</div>
+				</div>
 
-				<div>card3</div>
+				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
+					<div className="flex flex-col space-y-1.5 p-6">
+						<h3 className="font-semibold leading-none tracking-tight">
+							Titulo 3
+						</h3>
+						<p className="text-sm text-muted-foreground">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
+							sequi sint illo autem possimus tempore deserunt blanditiis
+							molestiae maxime temporibus quos reprehenderit enim voluptate
+							corrupti animi officia quaerat laboriosam asperiores?
+						</p>
+					</div>
+				</div>
 			</section>
 		</div>
 	)
