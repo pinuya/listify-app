@@ -1,5 +1,11 @@
-import { Link } from "@remix-run/react"
+import { Form, Link, redirect } from "@remix-run/react"
 import { Button } from "~/components/ui/button"
+
+export const action = () => {
+	//TODO: pegar os itens do form, validar e login
+
+	return redirect("/home")
+}
 
 export default function SignUp() {
 	return (
@@ -14,8 +20,8 @@ export default function SignUp() {
 				</div>
 
 				<div className="grid gap-6">
-					<form>
-						<div className="grid gap-2">
+					<div>
+						<Form method="POST" className="grid gap-2">
 							<input
 								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
 								id="nome"
@@ -52,14 +58,16 @@ export default function SignUp() {
 								autoCorrect="off"
 								type="password"
 							/>
-							<Button className="bg-foreground">Criar conta</Button>
+							<Button type="submit" className="bg-foreground">
+								Criar conta
+							</Button>
 							<Link
 								className="text-sm text-muted-foreground hover:underline"
 								to={"/entrar"}>
 								Já possui um cadastro? Entre aqui
 							</Link>
-						</div>
-					</form>
+						</Form>
+					</div>
 				</div>
 			</div>
 		</div>

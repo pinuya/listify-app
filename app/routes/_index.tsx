@@ -78,7 +78,21 @@ export default function Index() {
 				</div>
 			</section>
 
-			<section className="mt-20 flex flex-col space-y-4 sm:flex-row sm:space-x-4">
+			<section className="flex items-stretch space-y-4 sm:flex-row sm:space-x-4">
+				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
+					<div className="flex flex-col  space-y-1.5 p-6">
+						<h3 className="font-semibold leading-none tracking-tight">
+							Titulo
+						</h3>
+						<p className="text-sm text-muted-foreground">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
+							sequi sint illo autem possimus tempore deserunt blanditiis
+							molestiae maxime temporibus quos reprehenderit enim voluptate
+							corrupti animi officia quaerat laboriosam asperiores?
+						</p>
+					</div>
+				</div>
+
 				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
 					<div className="flex flex-col space-y-1.5 p-6">
 						<h3 className="font-semibold leading-none tracking-tight">
@@ -96,21 +110,7 @@ export default function Index() {
 				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
 					<div className="flex flex-col space-y-1.5 p-6">
 						<h3 className="font-semibold leading-none tracking-tight">
-							Titulo 2
-						</h3>
-						<p className="text-sm text-muted-foreground">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
-							sequi sint illo autem possimus tempore deserunt blanditiis
-							molestiae maxime temporibus quos reprehenderit enim voluptate
-							corrupti animi officia quaerat laboriosam asperiores?
-						</p>
-					</div>
-				</div>
-
-				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
-					<div className="flex flex-col space-y-1.5 p-6">
-						<h3 className="font-semibold leading-none tracking-tight">
-							Titulo 3
+							Titulo
 						</h3>
 						<p className="text-sm text-muted-foreground">
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
@@ -124,27 +124,25 @@ export default function Index() {
 
 			<footer className="m-4">
 				<div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-					<div className="sm:flex sm:items-center sm:justify-between">
-						<ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
-							<li>
-								<Link to={"#"} className="hover:underline me-4 md:me-6">
-									Sobre
-								</Link>
-							</li>
+					<ul className="flex flex-wrap items-center justify-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
+						<li>
+							<Link to={"#"} className="hover:underline me-4 md:me-6">
+								Sobre
+							</Link>
+						</li>
 
-							<li>
-								<Link to={"#"} className="hover:underline me-4 md:me-6">
-									Contato
-								</Link>
-							</li>
+						<li>
+							<Link to={"#"} className="hover:underline me-4 md:me-6">
+								Contato
+							</Link>
+						</li>
 
-							<li>
-								<Link to={"#"} className="hover:underline me-4 md:me-6">
-									Politicas de Privacidade
-								</Link>
-							</li>
-						</ul>
-					</div>
+						<li>
+							<Link to={"#"} className="hover:underline me-4 md:me-6">
+								Politicas de Privacidade
+							</Link>
+						</li>
+					</ul>
 
 					<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 					<span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
