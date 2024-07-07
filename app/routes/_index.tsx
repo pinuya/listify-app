@@ -78,21 +78,7 @@ export default function Index() {
 				</div>
 			</section>
 
-			<section className="flex items-stretch space-y-4 sm:flex-row sm:space-x-4">
-				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
-					<div className="flex flex-col  space-y-1.5 p-6">
-						<h3 className="font-semibold leading-none tracking-tight">
-							Titulo
-						</h3>
-						<p className="text-sm text-muted-foreground">
-							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
-							sequi sint illo autem possimus tempore deserunt blanditiis
-							molestiae maxime temporibus quos reprehenderit enim voluptate
-							corrupti animi officia quaerat laboriosam asperiores?
-						</p>
-					</div>
-				</div>
-
+			{/* <section className="flex flex-col items-stretch space-y-4 pt-10 sm:flex-row sm:space-x-4">
 				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
 					<div className="flex flex-col space-y-1.5 p-6">
 						<h3 className="font-semibold leading-none tracking-tight">
@@ -120,11 +106,25 @@ export default function Index() {
 						</p>
 					</div>
 				</div>
-			</section>
+
+				<div className="rounded-x1 border bg-card text-card-foreground shadow w-[350px]">
+					<div className="flex flex-col space-y-1.5 p-6">
+						<h3 className="font-semibold leading-none tracking-tight">
+							Titulo
+						</h3>
+						<p className="text-sm text-muted-foreground">
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi,
+							sequi sint illo autem possimus tempore deserunt blanditiis
+							molestiae maxime temporibus quos reprehenderit enim voluptate
+							corrupti animi officia quaerat laboriosam asperiores?
+						</p>
+					</div>
+				</div>
+			</section> */}
 
 			<section id="sobre">
-				<div className="flex flex-col pt-10 sm:flex-row">
-					<motion.div className="sm:mt-44">
+				<div className="flex flex-col sm:flex-row">
+					<div>
 						<motion.h1
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -139,7 +139,7 @@ export default function Index() {
 							qui. Necessitatibus, sunt velit! Nisi blanditiis ratione, commodi
 							sint quia minima?
 						</p>
-					</motion.div>
+					</div>
 				</div>
 			</section>
 
