@@ -1,22 +1,31 @@
 import type { ActionFunctionArgs } from "@remix-run/node"
 import { Form, Link, redirect, useActionData } from "@remix-run/react"
+import { z } from "zod"
 import { Button } from "~/components/ui/button"
+
+const loginSchema = z.object({
+	email: z.string().email({ message: "E-mail invalido." }),
+	password: z
+		.string()
+		.min(8, { message: "Senha tem que ter no minimo 8 caracteres." }),
+})
 
 export const action = async (args: ActionFunctionArgs) => {
 	const FORMDATA = await args.request.formData()
 	//TODO: pegar os itens do form, validar e login
 	const email = FORMDATA.get("email")
-	const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-	console.log(email)
-	if (!emailRegex.test(email?.toString() || "")) {
-		return {
-			errors: {
-				email: "email invalidu",
-			},
-		}
+	const password = FORMDATA.get("password")
+
+	const result = loginSchema.safeParse({
+		email,
+		password,
+	})
+
+	if (result.error) {
+		return result.error.formErrors.fieldErrors
 	}
-	return {}
-	//return redirect("/home")
+
+	return redirect("/home")
 }
 
 export default function SignIn() {
@@ -40,9 +49,7 @@ export default function SignIn() {
 							autoCorrect="off"
 							// type="email"
 						/>
-						{actionData &&
-							"errors" in actionData &&
-							actionData.errors.email && <p>{actionData.errors.email}</p>}
+						{actionData?.email && <p>{actionData.email}</p>}
 
 						<input
 							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
@@ -54,6 +61,7 @@ export default function SignIn() {
 							autoCorrect="off"
 							type="password"
 						/>
+						{actionData?.password && <p>{actionData.password}</p>}
 						<Button type="submit" className="bg-foreground">
 							Entrar
 						</Button>
