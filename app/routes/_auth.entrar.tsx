@@ -1,35 +1,48 @@
+import { useForm } from "@conform-to/react"
+import { parseWithZod } from "@conform-to/zod"
 import type { ActionFunctionArgs } from "@remix-run/node"
-import { Form, Link, redirect, useActionData } from "@remix-run/react"
+import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
 import { z } from "zod"
 import { Button } from "~/components/ui/button"
 
 const loginSchema = z.object({
-	email: z.string().email({ message: "E-mail invalido." }),
+	email: z
+		.string({ message: "Campo obrigatorio." })
+		.email({ message: "E-mail invalido." }),
 	password: z
-		.string()
+		.string({ message: "Campo obrigatorio." })
 		.min(8, { message: "Senha tem que ter no minimo 8 caracteres." }),
 })
 
 export const action = async (args: ActionFunctionArgs) => {
-	const FORMDATA = await args.request.formData()
+	const formData = await args.request.formData()
 	//TODO: pegar os itens do form, validar e login
-	const email = FORMDATA.get("email")
-	const password = FORMDATA.get("password")
+	const submission = parseWithZod(formData, { schema: loginSchema })
 
-	const result = loginSchema.safeParse({
-		email,
-		password,
-	})
-
-	if (result.error) {
-		return result.error.formErrors.fieldErrors
+	if (submission.status !== "success") {
+		return json(submission.reply())
 	}
 
 	return redirect("/home")
 }
 
 export default function SignIn() {
-	const actionData = useActionData<typeof action>()
+	const lastResult = useActionData<typeof action>()
+
+	const [form, fields] = useForm({
+		// Sync the result of last submission
+		lastResult,
+
+		// Reuse the validation logic on the client
+		onValidate({ formData }) {
+			return parseWithZod(formData, { schema: loginSchema })
+		},
+
+		// Validate the form on blur event triggered
+		shouldValidate: "onBlur",
+		shouldRevalidate: "onInput",
+	})
+
 	return (
 		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">
@@ -38,30 +51,29 @@ export default function SignIn() {
 				</div>
 
 				<div className="grid gap-6">
-					<Form method="POST" className="grid gap-2">
+					<Form
+						method="POST"
+						className="grid gap-2"
+						id={form.id}
+						onSubmit={form.onSubmit}>
 						<input
 							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-							id="email"
-							name="email"
-							placeholder="example@example.com"
-							autoCapitalize="none"
-							autoComplete="email"
-							autoCorrect="off"
+							type="email"
+							key={fields.email.key}
+							name={fields.email.name}
+							defaultValue={fields.email.initialValue}
 							// type="email"
 						/>
-						{actionData?.email && <p>{actionData.email}</p>}
+						<p>{fields.email.errors}</p>
 
 						<input
 							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-							id="senha"
-							name="password"
-							placeholder="Senha"
-							autoCapitalize="none"
-							autoComplete="sobrenome"
-							autoCorrect="off"
 							type="password"
+							key={fields.password.key}
+							name={fields.password.name}
+							defaultValue={fields.password.initialValue}
 						/>
-						{actionData?.password && <p>{actionData.password}</p>}
+						<p>{fields.password.errors}</p>
 						<Button type="submit" className="bg-foreground">
 							Entrar
 						</Button>
