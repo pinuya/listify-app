@@ -1,13 +1,50 @@
-import { Form, Link, redirect } from "@remix-run/react"
+import { useForm } from "@conform-to/react"
+import { parseWithZod } from "@conform-to/zod"
+import type { ActionFunctionArgs } from "@remix-run/node"
+import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
+import { z } from "zod"
 import { Button } from "~/components/ui/button"
 
-export const action = () => {
+const loginSchema = z.object({
+	name: z.string({ message: "Campo obrigatorio." }),
+	lastName: z.string({ message: "Campo obrigatorio." }),
+	email: z
+		.string({ message: "Campo obrigatorio." })
+		.email({ message: "E-mail invalido." }),
+	password: z
+		.string({ message: "Campo obrigatorio." })
+		.min(8, { message: "Senha tem que ter no minimo 8 caracteres." }),
+})
+
+export const action = async (args: ActionFunctionArgs) => {
+	const formData = await args.request.formData()
 	//TODO: pegar os itens do form, validar e login
+	const submission = parseWithZod(formData, { schema: loginSchema })
+
+	if (submission.status !== "success") {
+		return json(submission.reply())
+	}
 
 	return redirect("/home")
 }
 
 export default function SignUp() {
+	const lastResult = useActionData<typeof action>()
+
+	const [form, fields] = useForm({
+		// Sync the result of last submission
+		lastResult,
+
+		// Reuse the validation logic on the client
+		onValidate({ formData }) {
+			return parseWithZod(formData, { schema: loginSchema })
+		},
+
+		// Validate the form on blur event triggered
+		shouldValidate: "onBlur",
+		shouldRevalidate: "onInput",
+	})
+
 	return (
 		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
 			<div>abc</div>
@@ -21,43 +58,47 @@ export default function SignUp() {
 
 				<div className="grid gap-6">
 					<div>
-						<Form method="POST" className="grid gap-2">
+						<Form
+							method="POST"
+							className="grid gap-2"
+							id={form.id}
+							onSubmit={form.onSubmit}>
 							<input
 								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-								id="nome"
 								placeholder="Nome"
-								autoCapitalize="none"
-								autoComplete="nome"
-								autoCorrect="off"
 								type="text"
+								key={fields.name.key}
+								name={fields.name.name}
+								defaultValue={fields.name.initialValue}
 							/>
+							<p>{fields.name.errors}</p>
 							<input
 								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-								id="sobrenome"
+								type="text"
 								placeholder="Sobrenome"
-								autoCapitalize="none"
-								autoComplete="sobrenome"
-								autoCorrect="off"
-								type="text"
+								key={fields.lastName.key}
+								name={fields.lastName.name}
+								defaultValue={fields.lastName.initialValue}
 							/>
+							<p>{fields.lastName.errors}</p>
 							<input
 								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-								id="email"
-								placeholder="example@example.com"
-								autoCapitalize="none"
-								autoComplete="email"
-								autoCorrect="off"
 								type="email"
+								placeholder="example@example.com"
+								key={fields.email.key}
+								name={fields.email.name}
+								defaultValue={fields.email.initialValue}
 							/>
+							<p>{fields.email.errors}</p>
 							<input
 								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-								id="senha"
-								placeholder="Senha"
-								autoCapitalize="none"
-								autoComplete="sobrenome"
-								autoCorrect="off"
 								type="password"
+								placeholder="Senha"
+								key={fields.password.key}
+								name={fields.password.name}
+								defaultValue={fields.password.initialValue}
 							/>
+							<p>{fields.password.errors}</p>
 							<Button type="submit" className="bg-foreground">
 								Criar conta
 							</Button>
