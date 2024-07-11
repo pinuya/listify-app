@@ -2,7 +2,7 @@ import { z } from "zod"
 
 const schema = z.object({
 	NODE_ENV: z.enum(["production", "development", "test"] as const),
-	API_URL: z.string(),
+	SUPABASE_URL: z.string(),
 	JWT_SECRET: z.string(),
 	ANON_KEY: z.string(),
 	SERVICE_ROLE_KEY: z.string(),

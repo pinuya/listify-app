@@ -4,7 +4,7 @@ export const createSupabaseServerClient = (request: Request, admin = false) => {
 	const cookies = parse(request.headers.get("Cookie") ?? "")
 	const headers = new Headers()
 	const supabaseClient = createServerClient(
-		process.env.API_URL,
+		process.env.SUPABASE_URL,
 		admin ? process.env.SERVICE_ROLE_KEY : process.env.ANON_KEY,
 		{
 			cookies: {
