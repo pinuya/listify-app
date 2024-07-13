@@ -45,11 +45,6 @@ export const action = async (args: ActionFunctionArgs) => {
 	})
 }
 
-export const loader = () => {
-	console.log(process.env)
-	return {}
-}
-
 export default function SignUp() {
 	const lastResult = useActionData<typeof action>()
 
