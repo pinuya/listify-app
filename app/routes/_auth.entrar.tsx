@@ -4,6 +4,7 @@ import type { ActionFunctionArgs } from "@remix-run/node"
 import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
 import { z } from "zod"
 import { Button } from "~/components/ui/button"
+import { createSupabaseServerClient } from "~/services/supabase.server"
 
 const loginSchema = z.object({
 	email: z
@@ -23,7 +24,27 @@ export const action = async (args: ActionFunctionArgs) => {
 		return json(submission.reply())
 	}
 
-	return redirect("/home")
+	const { headers, supabaseClient } = createSupabaseServerClient(args.request)
+	const { email, password } = submission.value
+	const { error, data } = await supabaseClient.auth.signInWithPassword({
+		email,
+		password,
+	})
+
+	if (error) {
+		return json(
+			submission.reply({
+				fieldErrors: {
+					email: ["email ou senha incorretos."],
+					password: ["email ou senha incorretos."],
+				},
+			}),
+		)
+	}
+
+	return redirect("/home", {
+		headers,
+	})
 }
 
 export default function SignIn() {
