@@ -57,7 +57,8 @@ export default function NewList() {
 	}
 
 	return (
-		<div className="container relative flex-col items-center justify-center">
+		// className="flex flex-1 items-center justify-center gap-y-10 gap-x-28 sm:flex-row"
+		<div>
 			<h1 className="text-3xl font-semibold">Criar nova Lista</h1>
 			<Form
 				method="POST"

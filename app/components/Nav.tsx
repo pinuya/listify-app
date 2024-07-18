@@ -16,7 +16,7 @@ export function Nav() {
 	return (
 		<nav className="border-b bg-card">
 			<div className="flex items-center justify-between p-4">
-				<div>app</div>
+				<div>Listify</div>
 				<div className="flex gap-4">
 					<Link to={"/nova-lista"} prefetch="intent">
 						<Button>

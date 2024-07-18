@@ -3,6 +3,7 @@ import { parseWithZod } from "@conform-to/zod"
 import type { ActionFunctionArgs } from "@remix-run/node"
 import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
 import { z } from "zod"
+import { Footer } from "~/components/Footer"
 import { Button } from "~/components/ui/button"
 import { createSupabaseServerClient } from "~/services/supabase.server"
 
@@ -80,6 +81,7 @@ export default function SignIn() {
 						<input
 							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
 							type="email"
+							placeholder="example@example.com"
 							key={fields.email.key}
 							name={fields.email.name}
 							defaultValue={fields.email.initialValue}
@@ -90,6 +92,7 @@ export default function SignIn() {
 						<input
 							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
 							type="password"
+							placeholder="Senha"
 							key={fields.password.key}
 							name={fields.password.name}
 							defaultValue={fields.password.initialValue}
@@ -107,7 +110,7 @@ export default function SignIn() {
 				</div>
 			</div>
 
-			<div>abc</div>
+			<div className="">abc</div>
 		</div>
 	)
 }
