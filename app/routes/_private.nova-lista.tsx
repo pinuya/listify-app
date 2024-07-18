@@ -23,7 +23,6 @@ export const action = async (args: ActionFunctionArgs) => {
 
 	const { title, description, items } = submission.value
 	console.log(title, description, items)
-
 	return {}
 }
 export default function NewList() {
@@ -58,7 +57,8 @@ export default function NewList() {
 	}
 
 	return (
-		<div className="grid gap-6">
+		<div className="container relative flex-col items-center justify-center">
+			<h1 className="text-3xl font-semibold">Criar nova Lista</h1>
 			<Form
 				method="POST"
 				className="grid gap-2"
