@@ -46,6 +46,7 @@ export default function Index() {
 							className="font-semibold text-3xl sm:text-8xl">
 							Melhor forma <br /> de organizar suas tarefas!
 						</motion.h1>
+
 						<motion.p
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -58,6 +59,10 @@ export default function Index() {
 							desde tarefas diárias até listas de compras, metas de fitness,
 							roteiros de viagem e muito mais.
 						</motion.p>
+						<h2 className="font-semibold pt-5">
+							Experimente o Listify hoje mesmo e transforme a maneira como você
+							organiza sua vida.
+						</h2>
 						<motion.div
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -78,6 +83,58 @@ export default function Index() {
 				</div>
 			</section>
 
+			<section
+				id="sobre"
+				className="flex flex-col md:flex-row space-x-40 pt-40">
+				<div>
+					<h1 className="font-semibold text-xl sm:text-3xl">
+						Melhore seu estilo de vida!
+					</h1>
+					<span className="text-sm">
+						Com a vida cotidiana se movendo rapidamente, a organização se torna
+						essencial para manter o controle. Introduzindo o Listify, uma
+						aplicação intuitiva projetada para ajudar você a criar e gerenciar
+						listas de maneira eficiente e sem complicações.
+					</span>
+
+					<div className="grid grid-cols-3 sm:pt-10">
+						<div>
+							<h1 className="font-semibold text-lg">
+								Criar Listas Personalizadas
+							</h1>
+							<span className="text-sm">
+								Desde listas de compras até tarefas importantes, o ListUp
+								permite que você crie listas personalizadas para todas as suas
+								necessidades. Organize suas ideias e compromissos com
+								facilidade.
+							</span>
+						</div>
+						<div>
+							<h1 className="font-semibold text-lg">Interface Intuitiva</h1>
+							<span className="text-sm">
+								Projetada com foco na facilidade de uso, a interface do ListUp
+								permite que você navegue rapidamente entre suas listas e
+								adicione novos itens com apenas alguns toques.
+							</span>
+						</div>
+						<div>
+							<h1 className="font-semibold text-lg">
+								Por que escolher o Listify
+							</h1>
+							<span className="text-sm">
+								Com uma combinação poderosa de funcionalidades robustas e
+								simplicidade elegante, o ListUp se destaca como a escolha ideal
+								para aqueles que valorizam a organização sem esforço.
+							</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="contato" className="pt-20">
+				contato area
+			</section>
+
 			<footer className="m-4">
 				<div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
 					<ul className="flex flex-wrap items-center justify-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
@@ -88,7 +145,7 @@ export default function Index() {
 						</li>
 
 						<li>
-							<Link to={"#"} className="hover:underline me-4 md:me-6">
+							<Link to={"#contato"} className="hover:underline me-4 md:me-6">
 								Contato
 							</Link>
 						</li>
