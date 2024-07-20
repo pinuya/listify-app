@@ -63,7 +63,7 @@ export default function SignUp() {
 	})
 
 	return (
-		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
+		<div className="flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
 			<div>abc</div>
 
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">

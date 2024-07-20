@@ -18,7 +18,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
 	return (
-		<div className="container mx-auto">
+		<div>
 			<nav className="border-b bg-card">
 				<div className="flex items-end justify-end p-4">
 					<div className="sm:space-x-4">

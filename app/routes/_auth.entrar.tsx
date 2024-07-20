@@ -66,7 +66,7 @@ export default function SignIn() {
 	})
 
 	return (
-		<div className="container relative flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
+		<div className="flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">
 				<div className="text-2xl font-semibold tracking-tight">
 					Faça o seu login.
