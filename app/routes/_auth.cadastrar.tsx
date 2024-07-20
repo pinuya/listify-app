@@ -3,6 +3,7 @@ import { parseWithZod } from "@conform-to/zod"
 import type { ActionFunctionArgs } from "@remix-run/node"
 import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
 import { z } from "zod"
+// import { CreateAcc } from "~/assets/images"
 import { Button } from "~/components/ui/button"
 import { createSupabaseServerClient } from "~/services/supabase.server"
 
@@ -64,7 +65,7 @@ export default function SignUp() {
 
 	return (
 		<div className="flex-col items-center justify-center md:grid lg:max-none lg:grid-cols-2">
-			<div>abc</div>
+			<div>{/* <CreateAcc /> */}</div>
 
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6">
 				<div className="flex flex-col space-y-2 text-center">

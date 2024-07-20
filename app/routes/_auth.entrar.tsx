@@ -3,7 +3,8 @@ import { parseWithZod } from "@conform-to/zod"
 import type { ActionFunctionArgs } from "@remix-run/node"
 import { Form, Link, json, redirect, useActionData } from "@remix-run/react"
 import { z } from "zod"
-import { Footer } from "~/components/Footer"
+// import { Login } from "~/assets/images"
+// import { Footer } from "~/components/Footer"
 import { Button } from "~/components/ui/button"
 import { createSupabaseServerClient } from "~/services/supabase.server"
 
@@ -110,7 +111,7 @@ export default function SignIn() {
 				</div>
 			</div>
 
-			<div className="">abc</div>
+			<div className="">{/* <Login /> */}</div>
 		</div>
 	)
 }

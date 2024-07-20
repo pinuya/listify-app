@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node"
 import { Link } from "@remix-run/react"
-import { Plus } from "lucide-react"
+import { CircleHelp, ListPlus, Monitor, Plus } from "lucide-react"
 import { LandingPage } from "~/assets/images"
 import { ModeToggle } from "~/components/mode-toggle"
 import { Button } from "~/components/ui/button"
@@ -37,7 +37,7 @@ export default function Index() {
 			</nav>
 
 			<section id="intro">
-				<div className="flex flex-col pt-10 sm:flex-row">
+				<div className="container flex flex-col pt-10 sm:flex-row">
 					<motion.div className="sm:mt-44">
 						<motion.h1
 							initial={{ opacity: 0 }}
@@ -85,7 +85,7 @@ export default function Index() {
 
 			<section
 				id="sobre"
-				className="flex flex-col md:flex-row space-x-40 pt-40">
+				className="container flex flex-col md:flex-row space-x-40 pt-40">
 				<div>
 					<h1 className="font-semibold text-xl sm:text-3xl">
 						Melhore seu estilo de vida!
@@ -97,8 +97,9 @@ export default function Index() {
 						listas de maneira eficiente e sem complicações.
 					</span>
 
-					<div className="grid grid-cols-3 sm:pt-10">
+					<div className="flex flex-1 sm:pt-10">
 						<div>
+							<ListPlus />
 							<h1 className="font-semibold text-lg">
 								Criar Listas Personalizadas
 							</h1>
@@ -110,6 +111,7 @@ export default function Index() {
 							</span>
 						</div>
 						<div>
+							<Monitor />
 							<h1 className="font-semibold text-lg">Interface Intuitiva</h1>
 							<span className="text-sm">
 								Projetada com foco na facilidade de uso, a interface do ListUp
@@ -118,8 +120,9 @@ export default function Index() {
 							</span>
 						</div>
 						<div>
+							<CircleHelp />
 							<h1 className="font-semibold text-lg">
-								Por que escolher o Listify
+								Por que escolher o Listify?
 							</h1>
 							<span className="text-sm">
 								Com uma combinação poderosa de funcionalidades robustas e
