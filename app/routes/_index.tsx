@@ -97,34 +97,35 @@ export default function Index() {
 						listas de maneira eficiente e sem complicações.
 					</span>
 
-					<div className="flex flex-1 sm:pt-10">
-						<div>
+					<div className="flex flex-1 space-x-2 sm:pt-10">
+						<div className="flex flex-col items-center">
 							<ListPlus />
 							<h1 className="font-semibold text-lg">
 								Criar Listas Personalizadas
 							</h1>
-							<span className="text-sm">
+
+							<span className="text-sm text-center">
 								Desde listas de compras até tarefas importantes, o ListUp
 								permite que você crie listas personalizadas para todas as suas
 								necessidades. Organize suas ideias e compromissos com
 								facilidade.
 							</span>
 						</div>
-						<div>
+						<div className="flex flex-col items-center">
 							<Monitor />
 							<h1 className="font-semibold text-lg">Interface Intuitiva</h1>
-							<span className="text-sm">
+							<span className="text-sm text-center">
 								Projetada com foco na facilidade de uso, a interface do ListUp
 								permite que você navegue rapidamente entre suas listas e
 								adicione novos itens com apenas alguns toques.
 							</span>
 						</div>
-						<div>
+						<div className="flex flex-col items-center">
 							<CircleHelp />
 							<h1 className="font-semibold text-lg">
 								Por que escolher o Listify?
 							</h1>
-							<span className="text-sm">
+							<span className="text-sm text-center">
 								Com uma combinação poderosa de funcionalidades robustas e
 								simplicidade elegante, o ListUp se destaca como a escolha ideal
 								para aqueles que valorizam a organização sem esforço.
@@ -134,7 +135,7 @@ export default function Index() {
 				</div>
 			</section>
 
-			<section id="contato" className="pt-20">
+			<section id="contato" className="container pt-20">
 				contato area
 			</section>
 
