@@ -1,11 +1,12 @@
 import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
-import { type ActionFunctionArgs, json } from "@remix-run/node"
+import { type ActionFunctionArgs, json, redirect } from "@remix-run/node"
 import { Form, useActionData } from "@remix-run/react"
 import { Trash2 } from "lucide-react"
 import { useState } from "react"
 import { z } from "zod"
 import { Button } from "~/components/ui/button"
+import { createSupabaseServerClient } from "~/services/supabase.server"
 
 const listSchema = z.object({
 	title: z.string(),
@@ -22,8 +23,29 @@ export const action = async (args: ActionFunctionArgs) => {
 	}
 
 	const { title, description, items } = submission.value
-	console.log(title, description, items)
-	return {}
+	const { supabaseClient } = createSupabaseServerClient(args.request)
+	const { data, error } = await supabaseClient
+		.from("lists")
+		.insert({
+			title,
+			description,
+		})
+		.select()
+		.maybeSingle()
+
+	if (error || !data) {
+		throw new Error(error?.message)
+	}
+
+	const { error: itemError } = await supabaseClient
+		.from("list_itens")
+		.insert(items.map((item) => ({ title: item, list_id: data.id })))
+
+	if (itemError) {
+		throw new Error(itemError?.message)
+	}
+
+	return redirect("/home")
 }
 export default function NewList() {
 	const lastResult = useActionData<typeof action>()
