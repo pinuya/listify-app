@@ -11,12 +11,15 @@ import { Button } from "~/components/ui/button"
 import { PlusIcon } from "@radix-ui/react-icons"
 import { ModeToggle } from "./mode-toggle"
 import { Link } from "@remix-run/react"
+import { CiCircleList } from "react-icons/ci"
 
 export function Nav() {
 	return (
 		<nav className="border-b bg-card">
 			<div className="flex items-center justify-between p-4">
-				<div>Listify</div>
+				<div>
+					<CiCircleList />
+				</div>
 				<div className="flex gap-4">
 					<Link to={"/nova-lista"} prefetch="intent">
 						<Button>

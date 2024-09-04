@@ -2,12 +2,12 @@ import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import { type ActionFunctionArgs, json, redirect } from "@remix-run/node"
 import { Form, useActionData } from "@remix-run/react"
-import { Trash2 } from "lucide-react"
 import { useState } from "react"
 import { z } from "zod"
 import { Button } from "~/components/ui/button"
+import { Card } from "~/components/ui/card"
+import { Label } from "~/components/ui/label"
 import { createSupabaseServerClient } from "~/services/supabase.server"
-
 const listSchema = z.object({
 	title: z.string(),
 	description: z.string(),
@@ -79,49 +79,79 @@ export default function NewList() {
 	}
 
 	return (
-		// className="flex flex-1 items-center justify-center gap-y-10 gap-x-28 sm:flex-row"
-		<div>
-			<h1 className="text-3xl font-semibold">Criar nova Lista</h1>
-			<Form
-				method="POST"
-				className="grid gap-2"
-				id={form.id}
-				onSubmit={form.onSubmit}>
-				<input
-					className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-					type="text"
-					placeholder="Titulo"
-					key={fields.title.key}
-					name={fields.title.name}
-					defaultValue={fields.title.initialValue}
-				/>
-				<input
-					className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-					type="text"
-					placeholder="Descricao"
-					key={fields.description.key}
-					name={fields.description.name}
-					defaultValue={fields.description.initialValue}
-				/>
-				{itemCounter.map((v) => (
-					<div key={v} className="flex">
-						<input
-							className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-							type="text"
-							placeholder="item"
-							key={fields.items.key}
-							name={fields.items.name}
-						/>
-						<Trash2 onClick={() => removeItem(v)} />
+		<div className="w-full max-w-md mx-auto">
+			<div className="space-y-4">
+				<div className="space-y-2">
+					<h1 className="text-3xl font-bold">Ciar nova Lista</h1>
+					<p className="text-muted-foreground">
+						Digite um nome para sua nova lista e clique em “Criar” para começar.
+					</p>
+				</div>
+				<Form
+					method="POST"
+					className="grid gap-2"
+					id={form.id}
+					onSubmit={form.onSubmit}>
+					<Label htmlFor="title">Titulo da Lista</Label>
+					<input
+						className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+						type="text"
+						placeholder="Entre com um titulo para sua Lista"
+						key={fields.title.key}
+						name={fields.title.name}
+						defaultValue={fields.title.initialValue}
+					/>
+					<Label htmlFor="description">Descrição (opcional)</Label>
+					<input
+						className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+						type="text"
+						placeholder="Descrição da sua Lista"
+						key={fields.description.key}
+						name={fields.description.name}
+						defaultValue={fields.description.initialValue}
+					/>
+					{/* {itemCounter.map((v) => (
+						<div key={v} className="flex">
+							<input
+								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+								type="text"
+								placeholder="item"
+								key={fields.items.key}
+								name={fields.items.name}
+							/>
+							<Trash2 onClick={() => removeItem(v)} />
+						</div>
+					))} */}
+					{/* 
+					<Button type="button" onClick={() => addItem()}>
+						Adicionar
+					</Button> */}
+
+					<Button type="submit">Criar Lista</Button>
+				</Form>
+
+				<div className="mt-8 space-y-4">
+					<h2 className="text-2xl font-bold">Suas Listas</h2>
+					<div className="grid gap-4">
+						<Card className="p-4 flex items-center justify-between">
+							<div className="space-y-1">
+								<h3 className="font-semibold">Lista de Desejos</h3>
+								<p className="text-muted-foreground text-sm">
+									Last updated 1 week ago
+								</p>
+							</div>
+							<div className="flex items-center gap-2">
+								<Button variant="outline" size="sm">
+									Editar
+								</Button>
+								<Button variant="destructive" size="sm">
+									Deletar
+								</Button>
+							</div>
+						</Card>
 					</div>
-				))}
-
-				<Button type="button" onClick={() => addItem()}>
-					Adicionar
-				</Button>
-
-				<Button type="submit">Criar Lista</Button>
-			</Form>
+				</div>
+			</div>
 		</div>
 	)
 }
