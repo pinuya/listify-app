@@ -137,7 +137,7 @@ export default function NewList() {
 							<div className="space-y-1">
 								<h3 className="font-semibold">Lista de Desejos</h3>
 								<p className="text-muted-foreground text-sm">
-									Last updated 1 week ago
+									Ultimas alteracoes ha 13 dias atras
 								</p>
 							</div>
 							<div className="flex items-center gap-2">

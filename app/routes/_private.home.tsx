@@ -21,7 +21,7 @@ export default function Home() {
 	const { lists } = useLoaderData<typeof loader>()
 	return (
 		<div className="container relative flex-col items-center justify-center">
-			<h1 className="text-5xl font-semibold">Pagina Pessoal</h1>
+			<h1 className="text-5xl font-semibold">Minhas Listas</h1>
 			{lists.map(({ id, title, description }) => (
 				<div key={id}>
 					<div>{title}</div>

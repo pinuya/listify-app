@@ -39,7 +39,7 @@ export function Nav() {
 						<DropdownMenuContent>
 							<DropdownMenuLabel>Minha conta</DropdownMenuLabel>
 							<DropdownMenuSeparator />
-							<Link to={"/"} prefetch="intent">
+							<Link to={"/logout"} prefetch="intent">
 								<DropdownMenuItem>Sair</DropdownMenuItem>
 							</Link>
 						</DropdownMenuContent>
